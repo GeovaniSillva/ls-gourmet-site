@@ -197,19 +197,25 @@ nav.ativa {
 
 .hero {
   text-align: center;
-  padding: 4.5rem 1.5rem;
-  background-color: var(--cor-rosa-clara);
+  padding: 6rem 1.5rem;
+  background-image: linear-gradient(rgba(74, 46, 40, 0.55), rgba(74, 46, 40, 0.55)), url("../images/hero.fundo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--cor-branco);
 }
 
 .hero h1 {
   font-size: 2.4rem;
   max-width: 700px;
   margin: 0 auto 1rem;
+  color: var(--cor-branco);
 }
 
 .hero p {
   max-width: 550px;
   margin: 0 auto 2rem;
+  color: var(--cor-branco);
 }
 
 .chamada,
@@ -471,5 +477,6 @@ footer a:hover {
 
   .hero {
     padding: 3rem 1.2rem;
+    background-attachment: scroll;
   }
 }
