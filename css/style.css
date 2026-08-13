@@ -41,7 +41,12 @@ img {
   text-align: center;
   font-size: 0.8rem;
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
+}
+
+.faixa-anuncio a {
+  color: var(--cor-branco);
+  text-decoration: none;
 }
 
 header {
