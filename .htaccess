@@ -1,0 +1,51 @@
+# ====================================================================
+# .htaccess — LS Gourmet
+# ====================================================================
+# Isso configura o servidor Apache (usado pela Hostinger). Diferente
+# do HTML/CSS/JS, esse arquivo não afeta a APARÊNCIA do site — ele
+# decide COMO o servidor responde aos endereços (URLs) que os
+# visitantes digitam ou clicam.
+#
+# Objetivo aqui: remover o ".html" que aparecia no final dos links
+# (ex: mostrar "/cardapio" na barra de endereço em vez de
+# "/cardapio.html"), sem precisar renomear nenhum arquivo real.
+#
+# Reparem que os arquivos no servidor continuam se chamando
+# "cardapio.html", "sobre.html" etc. — só a URL que o visitante vê
+# fica mais limpa.
+# ====================================================================
+
+RewriteEngine On
+
+# --------------------------------------------------------------
+# 1) Quem digitar/acessar o endereço COM ".html" (ex: um link
+#    antigo salvo nos favoritos) é redirecionado pra versão sem
+#    extensão. R=301 é um redirecionamento PERMANENTE — importante
+#    pro Google entender que existe só UMA versão "oficial" de cada
+#    página (evita ter "/cardapio" e "/cardapio.html" competindo
+#    como se fossem páginas diferentes).
+# --------------------------------------------------------------
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# --------------------------------------------------------------
+# 2) Quando o navegador pede, por exemplo, "/cardapio" (sem
+#    ".html"), o servidor entrega por baixo dos panos o conteúdo de
+#    "cardapio.html" — mas a barra de endereço continua mostrando
+#    só "/cardapio", sem nenhum redirecionamento visível.
+#
+#    As duas condições (RewriteCond) abaixo checam, antes de aplicar
+#    a regra: "isso NÃO é uma pasta de verdade" e "existe um arquivo
+#    <nome>.html correspondente" — assim a regra só entra em ação
+#    quando faz sentido.
+# --------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# --------------------------------------------------------------
+# Garante que "/" (a raiz do site) carregue o index.html. Na
+# prática o servidor já costuma fazer isso por padrão, mas deixamos
+# explícito aqui por segurança.
+# --------------------------------------------------------------
+DirectoryIndex index.html

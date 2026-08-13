@@ -1,0 +1,538 @@
+/* --------------------------------------------------------------
+   1. RESET BÁSICO
+   Todo navegador já vem com estilos padrão (margem em <body>,
+   bullet em <li>, etc). A gente "zera" isso pra ter controle total.
+   -------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------------------
+   2. VARIÁVEIS DE COR (a paleta que você aprovou)
+   --nome-qualquer é como se cria uma "variável" em CSS.
+   Depois usamos var(--nome) em qualquer lugar do arquivo.
+   Vantagem: se um dia quiser mudar o rosa do site inteiro,
+   troca em UM lugar só, aqui embaixo.
+   -------------------------------------------------------------- */
+:root {
+  --cor-fundo: #fff8f2;        
+  --cor-branco: #ffffff;
+  --cor-rosa-clara: #fbdce6;   
+  --cor-rosa: #f2a6c4;         
+  --cor-rosa-escura: #c9678f;  
+  --cor-dourado: #c9a15a;      
+  --cor-marrom: #4a2e28;       
+  --fonte-logo: "Dancing Script", cursive;
+  --fonte-titulos: "Quicksand", sans-serif;
+  --fonte-corpo: "Quicksand", sans-serif;
+}
+
+
+/* --------------------------------------------------------------
+   3. ESTILOS GERAIS DE PÁGINA
+   -------------------------------------------------------------- */
+body {
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo);
+  color: var(--cor-marrom);
+  line-height: 1.6; 
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulos);
+  color: var(--cor-marrom);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  background-color: var(--cor-rosa-clara);
+}
+
+
+/* --------------------------------------------------------------
+   4. CABEÇALHO E MENU
+   -------------------------------------------------------------- */
+.faixa-anuncio {
+  background-color: var(--cor-dourado);
+  color: var(--cor-branco);
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  background-color: var(--cor-branco);
+}
+
+.logo p {
+  font-family: var(--fonte-logo);
+  font-size: 3.9rem;
+  color: var(--cor-rosa-escura);
+  line-height: 1;
+}
+
+.logo span {
+  display: block;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cor-marrom);
+}
+
+nav ul {
+  display: flex;
+  gap: 1.6rem;
+  list-style: none; 
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--cor-marrom);
+  font-weight: 600;
+  padding-bottom: 4px;
+}
+
+nav a[aria-current="page"] {
+  color: var(--cor-rosa-escura);
+  border-bottom: 2px solid var(--cor-rosa-escura);
+}
+
+nav a:hover {
+  color: var(--cor-rosa-escura);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  background-color: var(--cor-branco);
+  padding: 1rem 2rem;
+  transition: box-shadow 0.2s ease, padding 0.3s ease;
+}
+
+nav.escondida {
+  opacity: 0;
+}
+
+nav.ativa {
+  opacity: 1;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  animation: nav-deslizar 0.6s ease-out;
+}
+
+@keyframes nav-deslizar {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------------------
+   5. BOTÕES
+   -------------------------------------------------------------- */
+.botao-ifood {
+  display: inline-block;
+  background-color: var(--cor-dourado);
+  color: var(--cor-branco);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(201, 161, 90, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botao-ifood:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 16px rgba(201, 161, 90, 0.45);
+}
+
+.botao-whatsapp {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--cor-rosa-escura);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--cor-rosa-escura);
+  border-radius: 50px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botao-whatsapp:hover {
+  background-color: var(--cor-rosa-escura);
+  color: var(--cor-branco);
+}
+
+.link-saiba-mais {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--cor-rosa-escura);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-saiba-mais:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------
+   5.1 SELO DE AVALIAÇÃO GOOGLE
+   Um "selo" clicável mostrando a nota real do Google — em vez de só
+   AFIRMAR que somos os melhores, mostramos uma prova concreta e
+   verificável (a pessoa pode clicar e conferir as avaliações de
+   verdade). Usa as mesmas cores do resto do site: fundo branco,
+   texto marrom, estrelas em dourado.
+   -------------------------------------------------------------- */
+.selo-google {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--cor-branco);
+  color: var(--cor-marrom);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(74, 46, 40, 0.1);
+  margin: 0.3rem 0 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.selo-google:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 46, 40, 0.18);
+}
+
+.selo-google .estrelas {
+  color: var(--cor-dourado);
+  letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------
+   6. HERO (banner de abertura da Home)
+   -------------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  background-color: var(--cor-rosa-clara);
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  max-width: 700px;
+  margin: 0 auto 1rem;
+}
+
+.hero p {
+  max-width: 550px;
+  margin: 0 auto 2rem;
+}
+
+
+/* --------------------------------------------------------------
+   7. SEÇÕES DE CONTEÚDO (chamadas da home + páginas internas)
+   -------------------------------------------------------------- */
+.chamada,
+.pagina-cardapio,
+.pagina-sobre,
+.pagina-onde-encontrar,
+.pagina-contato {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  }
+
+.chamada h2,
+.pagina-cardapio h1,
+.pagina-sobre h1,
+.pagina-onde-encontrar h1,
+.pagina-contato h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.chamada p,
+.pagina-contato > p {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.chamada {
+  text-align: center;
+}
+
+.pagina-sobre p,
+.pagina-onde-encontrar p {
+  margin: 0 auto 1rem;
+  max-width: 650px;
+}
+
+.pagina-onde-encontrar,
+.pagina-sobre,
+.pagina-cardapio,
+.pagina-contato {
+  text-align: center;
+}
+
+.pagina-contato {
+  padding-bottom: 0;
+}
+
+.pagina-contato + .chamada {
+  padding-top: 1.5rem;
+}
+
+/* --------------------------------------------------------------
+   8. GRID DE PRODUTOS (cards)
+   -------------------------------------------------------------- */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.pagina-cardapio .grid-produtos {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 650px;
+  margin: 2rem auto;
+}
+
+.card-produto {
+  background-color: var(--cor-branco);
+  border-radius: 16px;
+  border-top: 3px solid var(--cor-rosa);
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(74, 46, 40, 0.08);
+  text-align: center;
+  padding-bottom: 1.2rem;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.card-produto:hover {
+  transform: translateY(-4px);
+}
+
+.card-produto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-produto h2,
+.card-produto h3 {
+  font-size: 1.15rem;
+  margin: 0.9rem 0.8rem 0.3rem;
+}
+
+.card-produto p {
+  padding: 0 1rem;
+  font-size: 0.92rem;
+}
+
+.card-produto .destaque {
+  color: var(--cor-dourado);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-produto .descricao {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1rem;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.card-produto.expandido .descricao {
+  max-height: 200px;
+  opacity: 1;
+  padding: 0 1rem 1.2rem;
+}
+
+/* --------------------------------------------------------------
+   9. RODAPÉ
+   -------------------------------------------------------------- */
+footer {
+  background-color: var(--cor-marrom);
+  color: var(--cor-branco);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--cor-rosa-clara);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* --------------------------------------------------------------
+   10. MENU HAMBÚRGUER (o botão de 3 tracinhos)
+   Por padrão ele fica ESCONDIDO — só aparece no celular (ver item 13).
+   O JavaScript (js/script.js) vai adicionar/remover a classe "aberto"
+   nesse botão e no <nav> quando o visitante clicar.
+   -------------------------------------------------------------- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background-color: var(--cor-marrom);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.aberto span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.aberto span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.aberto span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* --------------------------------------------------------------
+   11. BOTÃO "VOLTAR AO TOPO"
+   Fica invisível (opacity: 0) até o JS adicionar a classe "visivel",
+   que acontece depois que o visitante rola um pouco a página.
+   -------------------------------------------------------------- */
+.btn-topo {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--cor-dourado);
+  color: var(--cor-branco);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 20;
+}
+
+.btn-topo.visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------
+   13. RESPONSIVIDADE (telas menores, tipo celular)
+   Uma "media query" só aplica o CSS de dentro quando a condição bate.
+   max-width: 768px = "telas com até 768px de largura".
+   -------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .faixa-anuncio {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--cor-branco);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    position: static;
+    box-shadow: none;
+    padding: 0;
+    display: none;
+    width: 100%;
+    opacity: 1;
+  }
+
+  nav.escondida {
+    opacity: 1;
+  }
+
+  nav.aberto {
+    display: block;
+  }
+
+  nav.ativa {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    padding: 3rem 1.2rem;
+  }
+}
