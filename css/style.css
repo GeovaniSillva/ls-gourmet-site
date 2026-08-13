@@ -1,22 +1,9 @@
-/* --------------------------------------------------------------
-   1. RESET BÁSICO
-   Todo navegador já vem com estilos padrão (margem em <body>,
-   bullet em <li>, etc). A gente "zera" isso pra ter controle total.
-   -------------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-/* --------------------------------------------------------------
-   2. VARIÁVEIS DE COR (a paleta que você aprovou)
-   --nome-qualquer é como se cria uma "variável" em CSS.
-   Depois usamos var(--nome) em qualquer lugar do arquivo.
-   Vantagem: se um dia quiser mudar o rosa do site inteiro,
-   troca em UM lugar só, aqui embaixo.
-   -------------------------------------------------------------- */
 :root {
   --cor-fundo: #fff8f2;        
   --cor-branco: #ffffff;
@@ -30,10 +17,6 @@
   --fonte-corpo: "Quicksand", sans-serif;
 }
 
-
-/* --------------------------------------------------------------
-   3. ESTILOS GERAIS DE PÁGINA
-   -------------------------------------------------------------- */
 body {
   font-family: var(--fonte-corpo);
   background-color: var(--cor-fundo);
@@ -52,10 +35,6 @@ img {
   background-color: var(--cor-rosa-clara);
 }
 
-
-/* --------------------------------------------------------------
-   4. CABEÇALHO E MENU
-   -------------------------------------------------------------- */
 .faixa-anuncio {
   background-color: var(--cor-dourado);
   color: var(--cor-branco);
@@ -144,9 +123,6 @@ nav.ativa {
   }
 }
 
-/* --------------------------------------------------------------
-   5. BOTÕES
-   -------------------------------------------------------------- */
 .botao-ifood {
   display: inline-block;
   background-color: var(--cor-dourado);
@@ -193,14 +169,6 @@ nav.ativa {
   text-decoration: underline;
 }
 
-/* --------------------------------------------------------------
-   5.1 SELO DE AVALIAÇÃO GOOGLE
-   Um "selo" clicável mostrando a nota real do Google — em vez de só
-   AFIRMAR que somos os melhores, mostramos uma prova concreta e
-   verificável (a pessoa pode clicar e conferir as avaliações de
-   verdade). Usa as mesmas cores do resto do site: fundo branco,
-   texto marrom, estrelas em dourado.
-   -------------------------------------------------------------- */
 .selo-google {
   display: inline-flex;
   align-items: center;
@@ -227,9 +195,6 @@ nav.ativa {
   letter-spacing: 1px;
 }
 
-/* --------------------------------------------------------------
-   6. HERO (banner de abertura da Home)
-   -------------------------------------------------------------- */
 .hero {
   text-align: center;
   padding: 4.5rem 1.5rem;
@@ -247,10 +212,6 @@ nav.ativa {
   margin: 0 auto 2rem;
 }
 
-
-/* --------------------------------------------------------------
-   7. SEÇÕES DE CONTEÚDO (chamadas da home + páginas internas)
-   -------------------------------------------------------------- */
 .chamada,
 .pagina-cardapio,
 .pagina-sobre,
@@ -302,9 +263,6 @@ nav.ativa {
   padding-top: 1.5rem;
 }
 
-/* --------------------------------------------------------------
-   8. GRID DE PRODUTOS (cards)
-   -------------------------------------------------------------- */
 .grid-produtos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -374,9 +332,6 @@ nav.ativa {
   padding: 0 1rem 1.2rem;
 }
 
-/* --------------------------------------------------------------
-   9. RODAPÉ
-   -------------------------------------------------------------- */
 footer {
   background-color: var(--cor-marrom);
   color: var(--cor-branco);
@@ -399,13 +354,6 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
-/* --------------------------------------------------------------
-   10. MENU HAMBÚRGUER (o botão de 3 tracinhos)
-   Por padrão ele fica ESCONDIDO — só aparece no celular (ver item 13).
-   O JavaScript (js/script.js) vai adicionar/remover a classe "aberto"
-   nesse botão e no <nav> quando o visitante clicar.
-   -------------------------------------------------------------- */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -441,12 +389,6 @@ footer a:hover {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-
-/* --------------------------------------------------------------
-   11. BOTÃO "VOLTAR AO TOPO"
-   Fica invisível (opacity: 0) até o JS adicionar a classe "visivel",
-   que acontece depois que o visitante rola um pouco a página.
-   -------------------------------------------------------------- */
 .btn-topo {
   position: fixed;
   right: 1.5rem;
@@ -474,11 +416,6 @@ footer a:hover {
   transform: translateY(0);
 }
 
-/* --------------------------------------------------------------
-   13. RESPONSIVIDADE (telas menores, tipo celular)
-   Uma "media query" só aplica o CSS de dentro quando a condição bate.
-   max-width: 768px = "telas com até 768px de largura".
-   -------------------------------------------------------------- */
 @media (max-width: 768px) {
   .faixa-anuncio {
     font-size: 0.7rem;
