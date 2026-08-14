@@ -66,6 +66,11 @@ header {
   line-height: 1;
 }
 
+.logo p a {
+  text-decoration: none;
+  color: var(--cor-rosa-escura);
+}
+
 .logo span {
   display: block;
   font-size: 1.4rem;
@@ -439,7 +444,7 @@ footer a:hover {
   header {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 20;
     background-color: var(--cor-branco);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     padding: 1rem 1.5rem;
@@ -466,32 +471,47 @@ footer a:hover {
   }
 
   nav {
-    position: static;
-    box-shadow: none;
-    padding: 0;
-    display: none;
-    width: 100%;
-    opacity: 1;
-  }
-
-  nav.escondida {
-    opacity: 1;
+    position: fixed;
+    top: var(--topo-menu, 0px);
+    right: 0;
+    height: calc(100vh - var(--topo-menu, 0px));
+    width: min(65%, 190px);
+    z-index: 15;
+    background: linear-gradient(160deg, var(--cor-dourado) 0%, var(--cor-rosa) 90%);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1.25rem;
+    display: block;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
   }
 
   nav.aberto {
-    display: block;
-  }
-
-  nav.ativa {
-    box-shadow: none;
-    padding: 0;
+    transform: translateX(0);
   }
 
   nav ul {
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.2rem 0;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .fundo-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(74, 46, 40, 0.4);
+    z-index: 14;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .fundo-menu.visivel {
+    opacity: 1;
+    visibility: visible;
   }
 
   .hero h1 {
