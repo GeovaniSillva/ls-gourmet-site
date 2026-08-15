@@ -261,6 +261,65 @@ nav.ativa {
   text-align: center;
 }
 
+#nossa-historia {
+  max-width: 1500px;
+  width: 85%;
+  margin: 3rem auto 0;
+  padding: 4rem 1.5rem;
+  background: linear-gradient(160deg, var(--cor-dourado) 0%, var(--cor-rosa-clara) 90%);
+  border-radius: 24px;
+}
+
+.cartao-historia-texto h2 {
+  font-size: 3rem;
+}
+
+#nossa-historia .cartao-historia-texto p {
+  font-size: 1.5rem;
+}
+
+.cartao-historia {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: left;
+  text-decoration: none;
+}
+
+.cartao-historia-moldura {
+  flex: 0 0 380px;
+  display: block;
+  padding: 3px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--cor-dourado) 0%, var(--cor-rosa) 90%);
+}
+
+.cartao-historia img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.35s ease;
+}
+
+.cartao-historia:hover img {
+  transform: scale(1.05);
+}
+
+#nossa-historia .cartao-historia-texto h2,
+#nossa-historia .cartao-historia-texto p {
+  text-align: left;
+  margin: 0 0 0.75rem;
+}
+
+#nossa-historia .cartao-historia-texto p {
+  color: var(--cor-marrom);
+}
+
 .pagina-sobre p,
 .pagina-onde-encontrar p {
   margin: 0 auto 1rem;
@@ -522,4 +581,35 @@ footer a:hover {
     padding: 3rem 1.2rem;
     background-attachment: scroll;
   }
-}
+
+
+  #nossa-historia {
+    width: 80%;
+    padding: 2.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .cartao-historia {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .cartao-historia-moldura {
+    flex: 0 0 auto;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  #nossa-historia .cartao-historia-texto h2,
+  #nossa-historia .cartao-historia-texto p {
+    text-align: center;
+  }
+
+  .cartao-historia-texto h2 {
+    font-size: 1.5rem;
+  }
+
+  #nossa-historia .cartao-historia-texto p {
+    font-size: 0.9rem;
+  }
