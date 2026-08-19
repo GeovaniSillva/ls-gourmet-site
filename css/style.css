@@ -271,11 +271,11 @@ nav.ativa {
 }
 
 .cartao-historia-texto h2 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 #nossa-historia .cartao-historia-texto p {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .cartao-historia {
@@ -582,6 +582,9 @@ footer a:hover {
     background-attachment: scroll;
   }
 
+  .btn-topo {
+    z-index: 10;
+    }
 
   #nossa-historia {
     width: 80%;
